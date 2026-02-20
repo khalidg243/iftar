@@ -131,8 +131,19 @@ function moveNo() {
     
     // Make the YES button bigger
     yesButtonSize += 0.2;
-    document.getElementById("yes").style.transform = `scale(${yesButtonSize})`;
+    const yesBtn = document.getElementById("yes");
+    yesBtn.style.transform = `scale(${yesButtonSize})`;
     
+    // Ensure the response text is pushed below the (possibly scaled) YES button
+    const response = document.getElementById('response');
+    // Measure the scaled YES button height and set response margin accordingly
+    // Use a short timeout to ensure the transform has been applied before measuring
+    setTimeout(() => {
+        const rect = yesBtn.getBoundingClientRect();
+        const gap = 16; // px gap between button and response
+        response.style.marginTop = (rect.height + gap) + 'px';
+    }, 0);
+
     // Play funny sound
     const sound = document.getElementById("funnySound");
     sound.currentTime = 0;
