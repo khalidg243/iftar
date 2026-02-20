@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine?</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Tezza_2026_02_19_130948121.jpg') center/cover no-repeat;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    h1 {
+        color: white;
+        font-size: 48px;
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    
+    .button-container {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+    }
+    
+    button {
+        padding: 18px 45px;
+        font-size: 20px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transform: scale(1);
+    }
+    
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    }
+    
+    button:active {
+        transform: scale(0.98);
+    }
+    
+    #yes {
+        background: linear-gradient(135deg, #ff4d88, #ff69a1);
+        color: white;
+    }
+    
+    #yes:hover {
+        background: linear-gradient(135deg, #ff3366, #ff5588);
+    }
+    
+    #no {
+        background: linear-gradient(135deg, #666, #888);
+        color: white;
+        position: absolute;
+    }
+    
+    #no:hover {
+        background: linear-gradient(135deg, #555, #777);
+    }
+    
+    h2 {
+        color: white;
+        font-size: 36px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        min-height: 50px;
+        animation: slideIn 0.5s ease-out;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<audio id="funnySound">
+    <source src="2869-preview.mp3" type="audio/mpeg">
+</audio>
+
+<h1>Will you go out for iftar with me? 🌙💘</h1>
+
+<div class="button-container">
+    <button id="yes" onclick="sayYes()">YES ❤️</button>
+</div>
+<div class="button-container">
+    <button id="no" onmouseover="moveNo()">NO 😈</button>
+</div>
+
+<h2 id="response"></h2>
+
+<script>
+let yesButtonSize = 1;
+
+function sayYes() {
+    document.getElementById("response").innerHTML =
+        "Yayyyy 🥰 Best decision ever. Now go cook some food for me😋";
+}
+
+function moveNo() {
+    const btn = document.getElementById("no");
+    btn.style.top = Math.random() * window.innerHeight + "px";
+    btn.style.left = Math.random() * window.innerWidth + "px";
+    
+    // Make the YES button bigger
+    yesButtonSize += 0.2;
+    document.getElementById("yes").style.transform = `scale(${yesButtonSize})`;
+    
+    // Play funny sound
+    const sound = document.getElementById("funnySound");
+    sound.currentTime = 0;
+    sound.play();
+}
+</script>
+
+</body>
+</html>
